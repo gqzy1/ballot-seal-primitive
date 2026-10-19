@@ -4,7 +4,7 @@
 
 BallotSeal is a reusable GenLayer Intelligent Contract for governance proposal amendments. It seals exact version text, independently classifies five dimensions of change and preserves acknowledgements in immutable history. A meaningful or uncertain change starts a new consent epoch. Later cosmetic revisions cannot revive an older epoch's acknowledgement.
 
-**Release: 0.3 · Target: Stable Studionet / 61999 · Status: UNDEPLOYED.** No real transaction, live model accuracy or onchain consensus is claimed. This release is an offline-validated candidate; see [validation](VALIDATION.md) and [runtime boundaries](docs/RUNTIME.md).
+**Release: 0.3 · Stable Studionet / 61999 · DEPLOYED.** Seven real transactions finalized successfully, including native semantic comparisons. Final dual-track release remains BLOCKED by the limits in [live acceptance](docs/LIVE_ACCEPTANCE.md).
 
 ## Why it needs GenLayer
 
@@ -43,8 +43,9 @@ Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Exp
 
 No votes, quorum, membership, signatures over external documents, source authenticity, legal consent, fund custody or automatic execution. MIT licensed.
 
-GitHub Pages is configured for Actions but its hosted workflow is still queued; no Pages deployment success is claimed. Intended Pages URL: https://gqzy1.github.io/ballotseal-genlayer/ . The live walkthrough above uses the existing public Site.
+GitHub Pages has successfully published and been operated in real Chrome: https://gqzy1.github.io/ballotseal-genlayer/ . The older public Site remains an offline walkthrough; use Pages for the current deployment configuration.
 
-## Latest deployment checkpoint
+## Latest live acceptance
 
-See [2026-10-19 deployment evidence and authorization](docs/FINAL_DEPLOYMENT_CHECKPOINT.md). CI and GitHub Pages have verified results; real deployment/model consensus and narrow-screen browser acceptance remain blocked. Authorized broadcasts used: 0/8. Historical release authorization statements are superseded by this checkpoint.
+See [actual deployment, seven final receipts and remaining gates](docs/LIVE_ACCEPTANCE.md). Canonical source remains unchanged; the full deployed bytes match A/B. Broadcast budget used: **7/8**. Historical no-deployment statements are superseded by this evidence. Final status remains **BLOCKED** until the documented acceptance gaps are resolved.
+
