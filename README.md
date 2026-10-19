@@ -33,7 +33,7 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests
 sha256sum -c SOURCE_SHA256.txt
 ```
 
-Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Explicit SDK hash in its first line; v0.2.16 artifact in direct tests. The app holds a byte-identical full copy. [Application](https://github.com/gqzy1/ballotseal-genlayer) · [public walkthrough](https://gqzy1.github.io/ballotseal-genlayer/).
+Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Explicit SDK hash in its first line; v0.2.16 artifact in direct tests. The app holds a byte-identical full copy. [Application](https://github.com/gqzy1/ballotseal-genlayer) · [public walkthrough](https://ballotseal-gqzy1.zsf197176.chatgpt.site/).
 
 [API and architecture](docs/PROTOCOL.md) · [Consensus and threats](docs/SECURITY.md) · [deployment gate](docs/DEPLOYMENT.md) · [Intelligent Contracts submission draft](docs/SUBMISSION_CONTRACTS.md).
 
@@ -42,3 +42,5 @@ Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Exp
 16 proposals per address; 32 versions per proposal; 20–6,000 Unicode code points in exact text; 100-character title. Per-address bounds do not prevent Sybil activity. Acknowledgements are unique per address and version, with at most 32 historical records per address per proposal. Public reads return JSON and do not enumerate all users.
 
 No votes, quorum, membership, signatures over external documents, source authenticity, legal consent, fund custody or automatic execution. MIT licensed.
+
+GitHub Pages is configured for Actions but its hosted workflow is still queued; no Pages deployment success is claimed. Intended Pages URL: https://gqzy1.github.io/ballotseal-genlayer/ . The live walkthrough above uses the existing public Site.
