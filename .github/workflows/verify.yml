@@ -1,0 +1,21 @@
+name: Verify BallotSeal primitive
+on:
+  pull_request:
+  push:
+    branches: [main, fast/v0.2-primitive-import]
+permissions:
+  contents: read
+jobs:
+  direct-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests
+      - run: genvm-lint setup --version v0.2.16 --contract contracts/ballot_seal.py --json
+      - run: genvm-lint check contracts/ballot_seal.py --json
+      - run: sha256sum -c SOURCE_SHA256.txt

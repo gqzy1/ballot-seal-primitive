@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "request": "eth_chainId",
+  "http_status": 403,
+  "body": "error code: 1010\n"
+}
