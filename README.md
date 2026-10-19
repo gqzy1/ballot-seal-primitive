@@ -1,33 +1,44 @@
-# BallotSeal
+# BallotSeal Primitive
 
-**Keep consent attached to the exact proposal terms.**
+**Keep acknowledgement attached to the exact proposal terms.**
 
-BallotSeal is a GenLayer governance primitive for recording acknowledgements against a versioned proposal and determining whether a later version remains within the acknowledged context.
+BallotSeal is a reusable GenLayer Intelligent Contract for governance proposal amendments. It seals exact version text, independently classifies five dimensions of change and preserves acknowledgements in immutable history. A meaningful or uncertain change starts a new consent epoch. Later cosmetic revisions cannot revive an older epoch's acknowledgement.
 
-## Core rule
+**Release: 0.3 · Target: Stable Studionet / 61999 · Status: UNDEPLOYED.** No real transaction, live model accuracy or onchain consensus is claimed. This release is an offline-validated candidate; see [validation](VALIDATION.md) and [runtime boundaries](docs/RUNTIME.md).
 
-Compare proposal versions across five decision dimensions:
+## Why it needs GenLayer
 
-1. **Budget**
-2. **Beneficiary**
-3. **Delivery scope**
-4. **Deadline**
-5. **Authority**
+The same budget or delivery obligation can be rephrased; a small edit can also replace a recipient or grant treasury access. A byte diff cannot decide whether the underlying obligation changed. Leader and validators independently interpret the same sealed inputs through GenLayer's native nondeterministic boundary. They must agree on **every dimension's label**, rather than merely agree on a final pass/fail result. Only accepted decisions reach deterministic storage.
 
-An unchanged dimension may retain its existing acknowledgement epoch. A material change—or a result that cannot be classified confidently—requires fresh acknowledgement. Earlier acknowledgements remain part of the history and are never silently rewritten.
+Budget, beneficiary, delivery scope, deadline and authority are assessed as `SAME`, `CHANGED` or `UNCERTAIN`. Each result includes a bounded explanation and exact source excerpts. Explanations are the accepted leader's text, not verbatim prose agreed by validators. Quote grounding and schema validation supplement independent label agreement; they do not prove a model cannot be manipulated.
 
-## Scope and safety
+| Result | Deterministic effect |
+|---|---|
+| All five SAME | CARRY: keep current epoch |
+| Any CHANGED | RECONFIRM: increment epoch |
+| Otherwise any UNCERTAIN | REVIEW: increment epoch |
 
-- BallotSeal is **not** a voting or quorum system.
-- An acknowledgement record is not legal consent and does not automatically execute a proposal.
-- Local preview fixtures are demonstrations only; they do not represent a live AI consensus result or an on-chain transaction.
-- Custom proposal workflows require the intended GenLayer contract deployment and wallet interaction.
-- No deployment, wallet write, or on-chain transaction is implied by this repository.
+Acknowledgement is an explicit acceptance of the exact current text within this registry. REVIEW permits acknowledgement after a person reviews the text; it is not a governance veto or a claim that uncertainty was resolved.
 
-## Repository layout
+## Use and test
 
-The contract implementation, tests, and supporting documentation will be maintained here as the **Intelligent Contracts** track. The companion Projects application is maintained separately so that the contract primitive and user-facing app can be reviewed independently.
+Python **3.12**:
 
-## Development status
+```bash
+pip install -r requirements-dev.txt
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests
+# genvm-lint must be on PATH
+ genvm-lint setup --version v0.2.16 --contract contracts/ballot_seal.py --json
+ genvm-lint check contracts/ballot_seal.py --json
+sha256sum -c SOURCE_SHA256.txt
+```
 
-This repository has just been initialized. Treat runtime compatibility, full test execution, and live-chain behavior as unverified until their evidence is recorded in the repository.
+Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Explicit SDK hash in its first line; v0.2.16 artifact in direct tests. The app holds a byte-identical full copy. [Application](https://github.com/gqzy1/ballotseal-genlayer) · [public walkthrough](https://gqzy1.github.io/ballotseal-genlayer/).
+
+[API and architecture](docs/PROTOCOL.md) · [Consensus and threats](docs/SECURITY.md) · [deployment gate](docs/DEPLOYMENT.md) · [Intelligent Contracts submission draft](docs/SUBMISSION_CONTRACTS.md).
+
+## Bounds
+
+16 proposals per address; 32 versions per proposal; 20–6,000 Unicode code points in exact text; 100-character title. Per-address bounds do not prevent Sybil activity. Acknowledgements are unique per address and version, with at most 32 historical records per address per proposal. Public reads return JSON and do not enumerate all users.
+
+No votes, quorum, membership, signatures over external documents, source authenticity, legal consent, fund custody or automatic execution. MIT licensed.
