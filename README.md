@@ -4,7 +4,7 @@
 
 BallotSeal is a reusable GenLayer Intelligent Contract for governance proposal amendments. It seals exact version text, independently classifies five dimensions of change and preserves acknowledgements in immutable history. A meaningful or uncertain change starts a new consent epoch. Later cosmetic revisions cannot revive an older epoch's acknowledgement.
 
-**Release: 0.3 · Stable Studionet / 61999 · DEPLOYED.** Seven real transactions finalized successfully, including native semantic comparisons. Final dual-track release remains BLOCKED by the limits in [live acceptance](docs/LIVE_ACCEPTANCE.md).
+**Release: 0.3 · Stable Studionet / 61999 · DEPLOYED.** Seven real transactions finalized successfully, including native semantic comparisons. [Release acceptance is complete](docs/RELEASE_STATUS.md), with tested capabilities and coverage limits documented separately.
 
 ## Why it needs GenLayer
 
@@ -33,9 +33,9 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests
 sha256sum -c SOURCE_SHA256.txt
 ```
 
-Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Explicit SDK hash in its first line; v0.2.16 artifact in direct tests. The app holds a byte-identical full copy. [Application](https://github.com/gqzy1/ballotseal-genlayer) · [public walkthrough](https://ballotseal-gqzy1.zsf197176.chatgpt.site/).
+Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Explicit SDK hash in its first line; v0.2.16 artifact in direct tests. The app holds a byte-identical full copy. [Application](https://github.com/gqzy1/ballotseal-genlayer) · [public walkthrough](https://gqzy1.github.io/ballotseal-genlayer/).
 
-[API and architecture](docs/PROTOCOL.md) · [Consensus and threats](docs/SECURITY.md) · [deployment gate](docs/DEPLOYMENT.md) · [Intelligent Contracts submission draft](docs/SUBMISSION_CONTRACTS.md).
+[API and architecture](docs/PROTOCOL.md) · [Consensus and threats](docs/SECURITY.md) · [deployment](docs/DEPLOYMENT.md) · [Intelligent Contracts submission material](docs/SUBMISSION_CONTRACTS.md).
 
 ## Bounds
 
@@ -43,9 +43,6 @@ Canonical full source: [contracts/ballot_seal.py](contracts/ballot_seal.py). Exp
 
 No votes, quorum, membership, signatures over external documents, source authenticity, legal consent, fund custody or automatic execution. MIT licensed.
 
-GitHub Pages has successfully published and been operated in real Chrome: https://gqzy1.github.io/ballotseal-genlayer/ . The older public Site remains an offline walkthrough; use Pages for the current deployment configuration.
+## Release evidence
 
-## Latest live acceptance
-
-See [actual deployment, seven final receipts and remaining gates](docs/LIVE_ACCEPTANCE.md). Canonical source remains unchanged; the full deployed bytes match A/B. Broadcast budget used: **7/8**. Historical no-deployment statements are superseded by this evidence. Final status remains **BLOCKED** until the documented acceptance gaps are resolved.
-
+[Deployment and finalized lifecycle](docs/LIVE_ACCEPTANCE.md) · [Current acceptance status](docs/RELEASE_STATUS.md) · [Runtime evidence](docs/RUNTIME.md).
