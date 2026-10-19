@@ -155,3 +155,12 @@ def test_same_action_different_dimension_rejected(env):
     assert not validate(gl.vm.Return(labels(authority='CHANGED')))
     equivalent=labels(budget='CHANGED');equivalent['budget']['reason']='A different wording explains the same independently agreed classification.'
     assert validate(gl.vm.Return(equivalent))
+
+
+def test_reason_raw_size_is_bounded(env):
+    vm,c=env
+    ref=c.create('p','Grant',TEXT)
+    oversized=labels();oversized['budget']['reason']=' '*400+'An otherwise valid explanation for these terms.'
+    vm.mock_llm('.*',json.dumps(oversized))
+    with pytest.raises(Exception):c.revise('p',1,TEXT+'x')
+    assert json.loads(c.get_proposal(ref))['head']==1

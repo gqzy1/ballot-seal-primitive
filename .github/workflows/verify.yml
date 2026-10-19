@@ -2,7 +2,7 @@ name: Verify BallotSeal primitive
 on:
   pull_request:
   push:
-    branches: [main, fast/v0.2-primitive-import]
+    branches: [main]
 permissions:
   contents: read
 jobs:

@@ -4,7 +4,7 @@ This report applies only to `contracts/ballot_seal.py` matching SOURCE_SHA256.tx
 
 | Command | Result |
 |---|---|
-| PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests | 28 PASS in SDK Direct Mode, native SDK containers and mocked LLMs |
+| PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests | 29 PASS in SDK Direct Mode, native SDK containers and mocked LLMs |
 | genvm-lint setup --version v0.2.16 --contract contracts/ballot_seal.py --json | PASS, pinned artifacts |
 | genvm-lint check contracts/ballot_seal.py --json | PASS: 3 AST checks and SDK validation; 3 writes / 4 views |
 | genvm-lint schema contracts/ballot_seal.py --output docs/abi.json | PASS |
