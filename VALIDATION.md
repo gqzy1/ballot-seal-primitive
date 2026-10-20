@@ -13,4 +13,4 @@ This report applies only to `contracts/ballot_seal.py` matching SOURCE_SHA256.tx
 
 Raw outputs in evidence/. Commands were run in Python 3.12 with gltest 0.29.2 and genvm-linter 0.11.0. These automated tests do not run a fixed WASM executor or real LLM. Hosted GenVM execution and native semantic consensus were validated separately in the deployed lifecycle. Tests cover invalid and uncertain output, every changed dimension, owner namespace isolation, exact digests, consent continuation/reset/non-resurrection, acknowledgement immutability, duplicate/stale/invalid operations and storage bounds. Independent validator invocation rejects same-final-action results with different changed dimensions and allows reason-text variation.
 
-Hosted target-runtime and native-consensus evidence are recorded in [docs/LIVE_ACCEPTANCE.md](docs/LIVE_ACCEPTANCE.md). See [docs/RELEASE_STATUS.md](docs/RELEASE_STATUS.md) for acceptance status and remaining coverage limits.
+Hosted target-runtime and native-consensus evidence are recorded in [docs/LIVE_ACCEPTANCE.md](docs/LIVE_ACCEPTANCE.md). Runtime and coverage limits are documented there.
